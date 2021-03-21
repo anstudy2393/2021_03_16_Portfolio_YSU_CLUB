@@ -26,4 +26,8 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Join> joins=new ArrayList<>();
 
+
+    @Enumerated(EnumType.STRING)
+    private JoinStatus status;//[apply , cancel]
+
 }
