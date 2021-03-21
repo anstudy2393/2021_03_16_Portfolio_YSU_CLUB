@@ -23,6 +23,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 @Transactional
 public class JoinServiceTest {
+
     @PersistenceContext EntityManager em;
     @Autowired JoinRepository joinRepository;
     @Autowired JoinService joinService;
@@ -80,30 +81,6 @@ public class JoinServiceTest {
         fail("인원초과 에러 예외발생해야함");
     }
 
-    @Test
-    public void 동아리_변경(){
-
-        Member member = createMember();
-        Club club1 = createBook("테스트1",10);
-        Club club2 = createBook("테스트2",10);
-        int joinCount = 1;
-
-        Long joinId = joinService.Join(member.getId(),club1.getId(),joinCount);
-
-        Join getJoin = joinRepository.findOne(joinId);
-
-        assertEquals("상태확인", JoinStatus.apply,getJoin.getStatus());
-        assertEquals("빠진 멤버수 확인",9,club1.getTotalNumber());//10-1
-        assertEquals("들어간 동아리 확인","테스트1",club1.getName());
-
-        //joinService.cancelClub(joinId,club1.getId());
-
-        Long joinId2 = joinService.Join(member.getId(),club2.getId(),joinCount);
-        Join getJoin2 = joinRepository.findOne(joinId2);
-        assertEquals("상태확인", JoinStatus.apply,getJoin2.getStatus());
-        assertEquals("빠진 멤버수 확인",9,club2.getTotalNumber());//10-1
-        assertEquals("들어간 동아리 확인",member.getJoins().get(0).getJoinClubs().get(0).getClub().getName(),club2.getName());
-    }
 
     //동아리생성 메소드
     private Book createBook(String name,int totalCount) {
