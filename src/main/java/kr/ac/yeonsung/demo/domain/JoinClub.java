@@ -24,8 +24,28 @@ public class JoinClub {
     @JoinColumn(name = "club_id")
     private Club club;
 
+    private int count;//가입 인원(사실상1)
+    /*
     private int totalNumber;    // 총인원
-
     private int currentNumber;  // 현재인원
+    */
 
+    //=====생성 로직=====//
+    //동아리세팅
+    public static JoinClub addJoinClub(Club club,int count){
+        //System.out.println("=====joinClub의 addJoinClub메소드=====");
+        JoinClub joinClub = new JoinClub();
+        joinClub.setClub(club);
+        joinClub.setCount(count);
+        //System.out.println("넘어온 count : " + count);//ok
+        club.removeMember(count);
+        //System.out.println("===============");
+        return joinClub;
+    }
+
+    //=====비즈니스 로직=====//
+    //동아리 탈퇴
+    public void cancel(){
+        getClub().addMember(count);//Club클래스의 addMember메소드로 인원수 증가
+    }
 }
