@@ -44,11 +44,12 @@ public class JoinService {
     
     //탈퇴
     @Transactional
-    public void cancelClub(Long clubId,Long joinId){
+    public void cancelClub(Long clubId){
         //엔티티 조회
         Join join = joinRepository.findOne(clubId);
 
         //동아리 탈퇴
         join.cancel();
     }
+
 }

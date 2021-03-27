@@ -58,7 +58,9 @@ public class JoinServiceTest {
         Long joinId = joinService.Join(member.getId(),club.getId(),joinCount);
 
         //when
-        joinService.cancelClub(joinId,club.getId());
+
+        joinService.cancelClub(joinId);
+
 
         //then
         Join getjoin = joinRepository.findOne(joinId);
