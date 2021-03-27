@@ -23,6 +23,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 @Transactional
 public class JoinServiceTest {
+
     @PersistenceContext EntityManager em;
     @Autowired JoinRepository joinRepository;
     @Autowired JoinService joinService;
@@ -57,7 +58,9 @@ public class JoinServiceTest {
         Long joinId = joinService.Join(member.getId(),club.getId(),joinCount);
 
         //when
-        joinService.cancelClub(joinId,club.getId());
+
+        joinService.cancelClub(joinId);
+
 
         //then
         Join getjoin = joinRepository.findOne(joinId);
@@ -79,6 +82,7 @@ public class JoinServiceTest {
         //then
         fail("인원초과 에러 예외발생해야함");
     }
+
 
     @Test
     public void 동아리_변경(){
@@ -104,6 +108,7 @@ public class JoinServiceTest {
         assertEquals("빠진 멤버수 확인",9,club2.getTotalNumber());//10-1
         assertEquals("들어간 동아리 확인",member.getJoins().get(0).getJoinClubs().get(0).getClub().getName(),club2.getName());
     }
+
 
     //동아리생성 메소드
     private Book createBook(String name,int totalCount) {

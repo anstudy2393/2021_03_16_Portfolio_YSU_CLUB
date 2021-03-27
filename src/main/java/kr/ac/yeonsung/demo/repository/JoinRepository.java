@@ -3,10 +3,7 @@ package kr.ac.yeonsung.demo.repository;
 import kr.ac.yeonsung.demo.domain.Join;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.EntityManager;
-
-
 
 @Repository
 @RequiredArgsConstructor
