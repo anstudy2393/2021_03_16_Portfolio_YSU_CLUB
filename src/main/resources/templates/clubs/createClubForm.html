@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header" />
 <body>
+<!--<div th:replace="fragments/sidebar :: sidebar"/>-->
 <div class="container">
     <div th:replace="fragments/navbar :: navbar"/>
     <form th:action="@{/clubs/new}" th:object="${form}" method="post">
