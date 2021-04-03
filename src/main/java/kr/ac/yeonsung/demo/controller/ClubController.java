@@ -43,8 +43,15 @@ public class ClubController {
         List<Club> clubs = clubService.findClub();
         model.addAttribute("clubs",clubs);
         return "clubs/clubList";
+
     }
 
+
+    @PostMapping("clubs/{clubId}/delete")
+    public String deleteClub(@PathVariable("clubId") Long clubId){
+        Club club = clubService.findOne(clubId);
+        clubService.deleteClub(club);
+        return "redirect:/clubs";
     }
 
 
