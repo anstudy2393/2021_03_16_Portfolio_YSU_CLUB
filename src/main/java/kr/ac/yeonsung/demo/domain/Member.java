@@ -8,6 +8,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.*;
+
 @Entity
 @Getter
 @Setter
@@ -26,8 +28,9 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Join> joins=new ArrayList<>();
 
-
     @Enumerated(EnumType.STRING)
     private JoinStatus status;//[apply , cancel]
 
+    @OneToMany(mappedBy = "boardMember")
+    private List<NoticeBoard> noticeBoardList = new ArrayList<>();
 }
