@@ -19,6 +19,6 @@ public class Address {
     public Address(String classNumber, String department, String location) {
         this.classNumber = classNumber;
         this.department = department;
-        this.location = location;
+        this.location = location; // 아.
     }
 }
