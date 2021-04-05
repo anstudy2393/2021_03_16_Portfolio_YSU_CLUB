@@ -39,10 +39,10 @@
 - 5.테스트
 
 ### 3. 개발과정
-1. [김기남](https://github.com/Kimginam97/2021_03_16_Portfolio_YSU_CLUB/tree/master/summary/ginam)
-2. [김문기](https://github.com/Kimginam97/2021_03_16_Portfolio_YSU_CLUB/tree/master/summary/mungi)
-3. [이상남](https://github.com/Kimginam97/2021_03_16_Portfolio_YSU_CLUB/tree/master/summary/sangnam)
-4. [이우원](https://github.com/Kimginam97/2021_03_16_Portfolio_YSU_CLUB/tree/master/summary/woowon)
+1. [김기남 (팀장)](https://github.com/Kimginam97/2021_03_16_Portfolio_YSU_CLUB/tree/master/summary/ginam)
+2. [김문기 (조원)](https://github.com/Kimginam97/2021_03_16_Portfolio_YSU_CLUB/tree/master/summary/mungi)
+3. [이상남 (조원)](https://github.com/Kimginam97/2021_03_16_Portfolio_YSU_CLUB/tree/master/summary/sangnam)
+4. [이우원 (조원)](https://github.com/Kimginam97/2021_03_16_Portfolio_YSU_CLUB/tree/master/summary/woowon)
     <br>
     개발중 ...
 
