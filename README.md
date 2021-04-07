@@ -46,7 +46,7 @@
     <br>
     개발중 ...
 
-### 5. 어떻게 실행하나요?
+### 4. 어떻게 실행하나요?
 - 원하는 폴더 경로 터미널에 `https://github.com/Kimginam97/2021_03_16_Portfolio_YSU_CLUB.git` 입력
 - `application.yml` 파일로 실행합니다!
 
