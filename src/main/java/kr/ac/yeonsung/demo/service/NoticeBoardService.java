@@ -7,14 +7,8 @@ import kr.ac.yeonsung.demo.controller.NoticeBoardForm;
 import kr.ac.yeonsung.demo.domain.NoticeBoard;
 import kr.ac.yeonsung.demo.repository.NoticeBoardRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.Id;
 
 @Service
 @Transactional(readOnly = true)
@@ -36,14 +30,13 @@ public class NoticeBoardService {
 
     //게시글 단건 조회
     public NoticeBoard findOne(Long boardId){
-        return noticeBoardRepository.findById(boardId).orElse(null);
-
+        return noticeBoardRepository.findOne(boardId);
     }
    
     //게시글 삭제
     @Transactional
     public void delete(Long noticeId){
-        NoticeBoard notice = noticeBoardRepository.findById(noticeId).orElse(null);//게시글의 id값으로 해당 게시물을 가지고옴
+        NoticeBoard notice = noticeBoardRepository.findOne(noticeId);//게시글의 id값으로 해당 게시물을 가지고옴
         noticeBoardRepository.delete(notice);
     }
 
@@ -56,14 +49,9 @@ public class NoticeBoardService {
         //수정한 날짜를 저장
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
         updateNotice.setUpdateDate(dateTime);
-        noticeBoardRepository.save(updateNotice);
+        noticeBoardRepository.update(updateNotice);
     }
 
-    //게시글 목록 페이징처리
-    public Page<NoticeBoard> findAll(Pageable pageable){
-        int page = (pageable.getPageNumber() == 0) ? 0 : (pageable.getPageNumber() - 1); // page는 index 처럼 0부터 시작
-        pageable = PageRequest.of(page, 10, Sort.Direction.DESC,"id");
-        return noticeBoardRepository.findAll(pageable);
-    }
-
+    //게시글 전체 조회
+    public List<NoticeBoard> findAll(){ return noticeBoardRepository.findAll();}
 }

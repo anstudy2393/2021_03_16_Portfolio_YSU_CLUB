@@ -43,8 +43,6 @@ public class ClubController {
         model.addAttribute("clubs", clubs);
         return "clubs/clubList";
 
-    }
-
 
     @PostMapping("clubs/{clubId}/delete")
     public String deleteClub(@PathVariable("clubId") Long clubId){

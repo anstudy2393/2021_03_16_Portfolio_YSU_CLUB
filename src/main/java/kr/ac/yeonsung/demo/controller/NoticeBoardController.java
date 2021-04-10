@@ -3,9 +3,6 @@ package kr.ac.yeonsung.demo.controller;
 import kr.ac.yeonsung.demo.domain.NoticeBoard;
 import kr.ac.yeonsung.demo.service.NoticeBoardService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -71,9 +68,9 @@ public class NoticeBoardController {
 
     //전체 게시글 가지고오기
     @GetMapping("/noticeBoard/list")
-    public String getNoticeBoardList(@PageableDefault Pageable pageable, Model model){
-        Page<NoticeBoard> noticeBoardList = noticeBoardService.findAll(pageable);
-        model.addAttribute("noticeList", noticeBoardList);
+    public String getNoticeBoardList(Model model){
+        List<NoticeBoard> noticeBoardList = noticeBoardService.findAll();
+        model.addAttribute("noticeList",noticeBoardList);
         return "noticeBoard/noticeList";
     }
 }
