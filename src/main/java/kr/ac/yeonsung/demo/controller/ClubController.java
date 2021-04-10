@@ -43,6 +43,7 @@ public class ClubController {
         model.addAttribute("clubs", clubs);
         return "clubs/clubList";
 
+    }
 
     @PostMapping("clubs/{clubId}/delete")
     public String deleteClub(@PathVariable("clubId") Long clubId){
@@ -62,7 +63,7 @@ public class ClubController {
     @PostMapping("/clubs/{clubId}/change")
     public String change(BookForm form,@PathVariable("clubId") Long clubId){
         clubService.updateClub(clubId,form.getName(),form.getTotalNumber(),
-                                form.getAuthor(),form.getIsbn());
+                form.getAuthor(),form.getIsbn());
         return "redirect:/clubs";
     }
 }
