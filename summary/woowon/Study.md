@@ -37,3 +37,7 @@ public class NoticeBoard {
 ````html
 <a th:href="@{'경로'+${보낼 값}}" />
 ````
+
+# 페이징
++ https://github.com/Leewoowon980522/Jpa_PagingTest/blob/master/sumarry/Paging.md
+
