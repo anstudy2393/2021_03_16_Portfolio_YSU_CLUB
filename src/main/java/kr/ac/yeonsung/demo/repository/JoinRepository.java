@@ -2,7 +2,6 @@ package kr.ac.yeonsung.demo.repository;
 
 import kr.ac.yeonsung.demo.domain.Join;
 import kr.ac.yeonsung.demo.domain.JoinClub;
-import kr.ac.yeonsung.demo.domain.club.Club;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
@@ -19,11 +18,11 @@ public class JoinRepository {
 
         em.persist(join);
     }
-
+    // 모든 동아리 신청 현황 찾기(쿼리)
+    public List<JoinClub> findAll(){return em.createQuery("select j from JoinClub j",JoinClub.class).getResultList();}
     //동아리 조회
     public Join findOne(Long id){
         return em.find(Join.class,id);
     }
-    // 모든 동아리 신청 현황 찾기(쿼리)
-    public List<JoinClub> findAll(){return em.createQuery("select j from JoinClub j",JoinClub.class).getResultList();}
+
 }

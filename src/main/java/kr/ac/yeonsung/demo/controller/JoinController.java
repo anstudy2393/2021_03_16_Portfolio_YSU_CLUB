@@ -5,6 +5,7 @@ import kr.ac.yeonsung.demo.domain.Join;
 import kr.ac.yeonsung.demo.domain.JoinClub;
 import kr.ac.yeonsung.demo.domain.Member;
 import kr.ac.yeonsung.demo.domain.club.Club;
+import kr.ac.yeonsung.demo.repository.JoinClubRepository;
 import kr.ac.yeonsung.demo.service.ClubService;
 import kr.ac.yeonsung.demo.service.JoinService;
 import kr.ac.yeonsung.demo.service.MemberService;
@@ -22,6 +23,7 @@ public class JoinController {
     private final JoinService joinService;
     private final MemberService memberService;
     private final ClubService clubService;
+
 
     @GetMapping("/join")
     public String createForm(Model model){
