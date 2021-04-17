@@ -3,6 +3,7 @@
 <head th:replace="fragments/header :: header" />
 <body>
 
+
 <div class="container">
     <div th:replace="fragments/navbar :: navbar" />
     <div>
@@ -23,11 +24,19 @@
                 <td th:text="${member.address?.classNumber}"></td>
                 <td th:text="${member.address?.department}"></td>
                 <td th:text="${member.address?.location}"></td>
+
+                <td>
+                    <a href="#" th:href="@{/members/{id}/edit (id=${member.id})}"
+                       class="btn btn-primary" role="button">수정</a>
+                </td>
+
             </tr>
             </tbody>
         </table>
     </div>
+
 </div> <!-- /container -->
 <div th:replace="fragments/footer :: footer" />
+
 </body>
 </html>

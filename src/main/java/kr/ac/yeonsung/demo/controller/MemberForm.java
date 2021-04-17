@@ -9,6 +9,9 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 public class MemberForm {
 
+
+    private Long id;
+
     @NotEmpty(message = "회원 이름은 필수 입니다.") // 값이 비어있으면 메세지와 오류를 띄움
     private String name;
 
