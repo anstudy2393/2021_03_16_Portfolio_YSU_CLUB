@@ -340,6 +340,9 @@ public class ClubService {
 }
 ```
 
+## 아직 수정해야 할것
++ 삭제시 member 신청 상태를 cancle로 바꾸기.
+
 
 
 
