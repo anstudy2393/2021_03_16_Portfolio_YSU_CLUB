@@ -3,7 +3,9 @@ package kr.ac.yeonsung.demo.service;
 import kr.ac.yeonsung.demo.domain.club.Book;
 import kr.ac.yeonsung.demo.domain.club.Club;
 import kr.ac.yeonsung.demo.repository.ClubRepository;
+import kr.ac.yeonsung.demo.repository.JoinClubRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,8 +15,8 @@ import java.util.List;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class ClubService {
-
     private  final ClubRepository clubRepository;
+    private final JoinClubRepository joinClubRepository;
 
     @Transactional
     public void saveClub(Club club){
@@ -28,7 +30,6 @@ public class ClubService {
     public  Club findOne(Long clubId){
         return clubRepository.findOne(clubId);
     }
-
     @Transactional
     public void deleteClub(Club club){ clubRepository.deleteOne(club);}
 

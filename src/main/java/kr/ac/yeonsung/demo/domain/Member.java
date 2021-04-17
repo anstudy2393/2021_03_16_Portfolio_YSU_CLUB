@@ -34,9 +34,4 @@ public class Member {
     @OneToMany(mappedBy = "boardMember")
     private List<NoticeBoard> noticeBoardList = new ArrayList<>();
 
-////,,,,,,,
-    public void delClub(Join join){
-        joins.remove(join);
-        join.setMember(null);
-    }
 }

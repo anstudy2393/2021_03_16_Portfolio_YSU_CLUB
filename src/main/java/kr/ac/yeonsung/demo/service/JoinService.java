@@ -5,6 +5,7 @@ import kr.ac.yeonsung.demo.domain.JoinClub;
 import kr.ac.yeonsung.demo.domain.Member;
 import kr.ac.yeonsung.demo.domain.club.Club;
 import kr.ac.yeonsung.demo.repository.ClubRepository;
+import kr.ac.yeonsung.demo.repository.JoinClubRepository;
 import kr.ac.yeonsung.demo.repository.JoinRepository;
 import kr.ac.yeonsung.demo.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ public class JoinService {
     private final ClubRepository clubRepository;
     private final MemberRepository memberRepository;
     private final JoinRepository joinRepository;
+    private final JoinClubRepository joinClubRepository;
 
     //가입
     @Transactional
@@ -40,6 +42,7 @@ public class JoinService {
         //System.out.println("Ststus확인 : " + join.getStatus());
         //저장
         joinRepository.save(join);
+        joinClubRepository.save(joinClub);
         //System.out.println("===============");
         return join.getId();
     }
