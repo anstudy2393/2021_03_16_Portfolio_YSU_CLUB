@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+
 import javax.validation.Valid;
 import java.util.List;
 
@@ -48,6 +49,7 @@ public class MemberController {
         return "members/memberList"; // members의 memberList.html를 반환
     }
 
+
     @GetMapping("members/{memberId}/edit")
     public String updateMemberForm(@PathVariable("memberId") Long memberId, Model model) {
         Member member = memberService.findOne(memberId);
@@ -74,4 +76,5 @@ public class MemberController {
         memberService.deleteId(memberId);
         return "redirect:/members";
     }
+
 }
