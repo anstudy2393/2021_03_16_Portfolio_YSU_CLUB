@@ -24,7 +24,7 @@ public class Join {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "join",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "join",cascade = CascadeType.REMOVE)
     private List<JoinClub> joinClubs = new ArrayList<>();
 
     private LocalDateTime joinDateAt;   // 신청한 날짜
