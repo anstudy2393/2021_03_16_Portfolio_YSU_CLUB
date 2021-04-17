@@ -25,7 +25,8 @@ import static org.junit.Assert.*;
 public class JoinServiceTest {
 
     @PersistenceContext EntityManager em;
-    @Autowired JoinRepository joinRepository;
+    @Autowired
+    JoinRepository joinRepository;
     @Autowired JoinService joinService;
 
     @Test
@@ -58,7 +59,9 @@ public class JoinServiceTest {
         Long joinId = joinService.Join(member.getId(),club.getId(),joinCount);
 
         //when
-        joinService.cancelClub(joinId,club.getId());
+
+        joinService.cancelClub(joinId);
+
 
         //then
         Join getjoin = joinRepository.findOne(joinId);

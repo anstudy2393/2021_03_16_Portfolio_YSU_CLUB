@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<body>
+<div th:replace="fragments/navbar :: navbar"/>
+<div class="container">
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>회원명</th>
+                <th>동아리 이름</th>
+                <th>동아리 신청상태</th>
+                <th>신청 취소</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="joinClub : ${joins}">
+                <td th:text="${joinClub.id}"></td>
+                <td th:text="${joinClub.join.getMember().getName()}"></td>
+                <td th:text="${joinClub.club.getName()}"></td>
+                <td th:text="${joinClub.join.getMember().getStatus()}"></td>
+                <td>
+                    <a th:if="${joinClub.join.status.name() == 'apply'}" href="#"
+                       th:href="'javascript:cancel('+${joinClub.join.id}+')'"
+                       class="btn btn-danger">CANCEL</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:replace="fragments/footer :: footer"/>
+</div> <!-- /container -->
+</body>
+<script>
+    function cancel(id) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/joins/" + id + "/cancel");
+        document.body.appendChild(form);
+        form.submit();
+    }</script>
+</html>
