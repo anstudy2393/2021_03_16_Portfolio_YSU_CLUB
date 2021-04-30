@@ -10,7 +10,7 @@ import static javax.persistence.FetchType.*;
 @Getter @Setter @DynamicInsert
 public class NoticeBoard {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "boardNotice_id")
     private Long id;//게시글번호
 
