@@ -74,6 +74,16 @@ public class NoticeBoardController {
     public String getNoticeBoardList(@PageableDefault Pageable pageable, Model model){
         Page<NoticeBoard> noticeBoardList = noticeBoardService.findAll(pageable);
         model.addAttribute("noticeList", noticeBoardList);
+
+        List<NoticeBoard> getBoardList = noticeBoardList.getContent();
+        model.addAttribute("getBoardList",getBoardList);//list size가져옴, list size확인용
         return "noticeBoard/noticeList";
     }
+    @GetMapping("/")
+    public String getNoticeBoardListTop3(Model model){
+        List<NoticeBoard> getTop = noticeBoardService.findTop3Board();
+        model.addAttribute("findTop3",getTop);
+        return "index";
+    }
+
 }

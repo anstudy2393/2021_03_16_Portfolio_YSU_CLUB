@@ -3,7 +3,8 @@
 <head th:replace="fragments/header :: header" />
 <body>
 <div th:replace="fragments/navbar :: navbar" />
-<div class="container">
+
+<div class="container" th:if="${getBoardList.size()}!=0">
     <div>
         <table class="table table-striped">
             <thead>
@@ -58,9 +59,25 @@
                 </li>
             </ul>
         </nav>
-
     </div>
-    <div th:replace="fragments/footer :: footer" />
 </div> <!-- /container -->
+<div class="container" th:unless="${getBoardList.size()}!=0"><!--데이터가 없을경우-->
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>제목</th>
+            <th>작성날짜</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th colspan="4" style="text-align: center">등록된 공지사항이 없습니다!</th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:replace="fragments/footer :: footer" />
 </body>
 </html>

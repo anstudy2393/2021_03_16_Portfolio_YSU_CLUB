@@ -77,7 +77,29 @@
               </div>
               <a href="/" class="list-group-item active">공지사항 둘러보기</a>
               <div class="list-group-item">
-                <div class="list-group">
+                <div class="list-group" th:if="${findTop3.size()}!=0">
+                  <table class="table">
+                    <tbody>
+                    <tr>
+                      <th class="mobile" scope="col" style="width: 60px; text-align: center;">번호</th>
+                      <th scope="col" style="text-align: center;">제목</th>
+                      <th class="mobile" scope="col" style="width: 80px; text-align: center;">작성자</th>
+                      <th class="mobile" scope="col" style="width: 120px; text-align: center;">작성일</th>
+                    </tr>
+                    <tr th:each="findTop : ${findTop3}">
+                      <td th:text="${findTop.id}"></td>
+                      <td><a th:text="${findTop.title}" href="" th:href="@{'/noticeBoard/view/'+${findTop.id}}"/></td>
+                      <td th:text="${findTop.name}"></td>
+                      <td th:text="${findTop.writeDate}"></td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="4"><button class="btn btn-success" data-toggle="modal" data-target="#modal" onclick = "location.href = '/noticeBoard/write'">공지사항 추가</button></td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="list-group" th:unless="${findTop3.size()}!=0">
                   <table class="table">
                     <tbody>
                     <tr>
@@ -87,25 +109,10 @@
                       <th class="mobile" scope="col" style="width: 120px; text-align: center;">작성일</th>
                     </tr>
                     <tr>
-                      <th class="mobile" scope="row" style="text-align: center;">3</th>
-                      <td>종합소득세 20% 할인 이벤트입니다!</td>
-                      <td class="mobile" style="text-align: center;">운영자</td>
-                      <td class="mobile" style="text-align: center;">2018-01-08</td>
+                      <td colspan="4" style="text-align: center">등록된 공지사항이 없습니다!</td>
                     </tr>
                     <tr>
-                      <th class="mobile" scope="row" style="text-align: center;">2</th>
-                      <td>신규 회원 포인트 적립 이벤트가 시작됩니다.</td>
-                      <td class="mobile" style="text-align: center;">운영자</td>
-                      <td class="mobile" style="text-align: center;">2018-01-07</td>
-                    </tr>
-                    <tr>
-                      <th class="mobile" scope="row" style="text-align: center;">1</th>
-                      <td>사이트 개설 수수료 10% 이벤트입니다.</td>
-                      <td class="mobile" style="text-align: center;">운영자</td>
-                      <td class="mobile" style="text-align: center;">2018-01-05</td>
-                    </tr>
-                    <tr>
-                      <td colspan="4"><button class="btn btn-success" data-toggle="modal" data-target="#modal">이벤트 추가</button></td>
+                      <td colspan="4"><button class="btn btn-success" data-toggle="modal" data-target="#modal" onclick = "location.href = '/noticeBoard/write'">공지사항 추가</button></td>
                     </tr>
                     </tbody>
                   </table>
