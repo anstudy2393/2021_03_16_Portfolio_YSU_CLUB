@@ -65,5 +65,9 @@ public class NoticeBoardService {
         pageable = PageRequest.of(page, 10, Sort.Direction.DESC,"id");
         return noticeBoardRepository.findAll(pageable);
     }
-
+    //index.html 최신 공지사항 3개 가져오기
+    public List<NoticeBoard> findTop3Board(){
+        List<NoticeBoard> getTop = noticeBoardRepository.findTop3ByOrderByIdDesc();
+        return getTop;
+    }
 }

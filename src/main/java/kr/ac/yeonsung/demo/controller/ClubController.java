@@ -4,6 +4,8 @@ package kr.ac.yeonsung.demo.controller;
 import kr.ac.yeonsung.demo.domain.club.Book;
 import kr.ac.yeonsung.demo.domain.club.Club;
 import kr.ac.yeonsung.demo.service.ClubService;
+import kr.ac.yeonsung.demo.service.JoinClubService;
+import kr.ac.yeonsung.demo.service.JoinService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ClubController {
     private final ClubService clubService;
+    private final JoinClubService joinClubService;
+
 
     @GetMapping("/clubs/new")
     public String createForm(Model model) {
@@ -51,7 +55,6 @@ public class ClubController {
         clubService.deleteClub(club);
         return "redirect:/clubs";
     }
-
 
     @GetMapping("/clubs/{clubId}/change")
     public String changeForm(Model model,@PathVariable("clubId") Long clubId){
