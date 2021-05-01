@@ -30,7 +30,7 @@ public abstract class Club {
     @OneToMany(mappedBy = "club",cascade = CascadeType.ALL)
     private List<CategoryClub> categoryClubs = new ArrayList<>();
 
-    @OneToMany(mappedBy = "club",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "club",cascade = CascadeType.REMOVE)
     private List<JoinClub> joinClubs = new ArrayList<>();
 
     //=====비즈니스 로직=====//

@@ -2,29 +2,20 @@ package kr.ac.yeonsung.demo.repository;
 
 import kr.ac.yeonsung.demo.domain.Join;
 import kr.ac.yeonsung.demo.domain.JoinClub;
+import kr.ac.yeonsung.demo.domain.JoinclubMapping;
+import kr.ac.yeonsung.demo.domain.club.Club;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
-@RequiredArgsConstructor
-public class JoinClubRepository {
-
-    private final EntityManager em;
-    private JoinClub joinClub;
-
-    public void save(JoinClub joinClub){
-        em.persist(joinClub);
-    }
-
-    //동아리 조회
-    public JoinClub findOne(Long id){
-        return em.find(JoinClub.class,id);
-    }
-
-    public void deleteOne(JoinClub joinClub) {
-        em.remove(joinClub);
-    }
+public interface JoinClubRepository extends JpaRepository<JoinClub,Long> {
+    List<JoinclubMapping> findByClub(Club club);
 }
 

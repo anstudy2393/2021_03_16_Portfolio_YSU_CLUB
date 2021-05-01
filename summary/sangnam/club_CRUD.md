@@ -152,14 +152,17 @@ public class ClubController {
 ```
 
 ## 수정
+
 + clubList.html
 
   ##### 1. 넘겨받은 club의 정보를 모두 보여준다.
 
   ##### 2. 수정버튼을 누르면 해당 필드의 id값을 받아와 chageClub 함수의 매개변수로 넘긴다.
 
-  + form을 생성해 clubs/id/change 페이지로 값을 넘긴다.
+    + form을 생성해 clubs/id/change 페이지로 값을 넘긴다.
+
 ```html
+
 <tbody>
 <tr th:each="club : ${clubs}">
     <td th:text="${club.id}"></td>
@@ -185,11 +188,15 @@ public class ClubController {
     }
 </script>
 ```
-###수정폼
+
+### 수정폼
+
 + ClubController.java
+
 ##### clubList에서 아이디값을 받아와 객체를 찾은후 clubs/clubInfoChage로 보냄
 
 ```java
+
 @Controller
 @RequiredArgsConstructor
 public class ClubController {
@@ -201,12 +208,14 @@ public class ClubController {
     }
 }
 ```
+
 + clubInfoChange.html
   ##### 1. 수정할 객체의 값을 미리 셋팅해놓고 수정한다.
-  
+
   ##### 2. 수정이 완료되면 값을 action="@{'/clubs/'+${clubId}+'/change'}"로 보낸다.
 
 ```html
+
 <form th:action="@{'/clubs/'+${clubId}+'/change'}" th:object="${form}" method="post">
     <div class="form-group">
         <label th:for="name">동아리명</label>
@@ -230,23 +239,27 @@ public class ClubController {
     <button type="submit" class="btn btn-primary">수정</button>
 </form>
 ```
+
 + ClubControlle.java
-  #### 수정폼에서 값을 받아와  clubService.updateClub의 매개변수로 넣어준다.
+  #### 수정폼에서 값을 받아와 clubService.updateClub의 매개변수로 넣어준다.
+
 ```java
+
 @Controller
 @RequiredArgsConstructor
 public class ClubController {
-  @PostMapping("/clubs/{clubId}/change")
-  public String change(BookForm form,@PathVariable("clubId") Long clubId){
-    clubService.updateClub(clubId,form.getName(),form.getTotalNumber(),
-                            form.getAuthor(),form.getIsbn());
-    return "redirect:/clubs";
-  }
+    @PostMapping("/clubs/{clubId}/change")
+    public String change(BookForm form, @PathVariable("clubId") Long clubId) {
+        clubService.updateClub(clubId, form.getName(), form.getTotalNumber(),
+                form.getAuthor(), form.getIsbn());
+        return "redirect:/clubs";
+    }
 }
 ```
+
 + clubService.java
   ##### findone함수로 하나를 찾아온 후 값을 변경한다.
-  + findone 찾으면 영속상태가 되어 값이변경되면 자동으로 변경감지를 하여 update를 한다.
+    + findone 찾으면 영속상태가 되어 값이변경되면 자동으로 변경감지를 하여 update를 한다.
 
 ```java
 public class ClubService {
@@ -264,16 +277,18 @@ public class ClubService {
 }
 ```
 
-
 ## 삭제
+
 + clubList.html
 
   ##### 1. 넘겨받은 club의 정보를 모두 보여준다.
 
   ##### 2. 삭제버튼을 누르면 해당 필드의 id값을 받아와 deleteClub 함수의 매개변수로 넘긴다.
 
-  + form을 생성해 clubs/id/delete 페이지로 값을 넘긴다.
+    + form을 생성해 clubs/id/delete 페이지로 값을 넘긴다.
+
 ```html
+
 <tbody>
 <tr th:each="club : ${clubs}">
     <td th:text="${club.id}"></td>
@@ -290,32 +305,77 @@ public class ClubService {
 </tr>
 </tbody>
 <script>
-  function deleteClub(id) {
-    if(confirm(id+"번 동아리를 삭제하시겠습니까?")){
-      var form = document.createElement("form");
-      form.setAttribute("method", "post");
-      form.setAttribute("action", "/clubs/" + id + "/delete");
-      document.body.appendChild(form);
-      form.submit();
-    }
+    function deleteClub(id) {
+        if (confirm(id + "번 동아리를 삭제하시겠습니까?")) {
+            var form = document.createElement("form");
+            form.setAttribute("method", "post");
+            form.setAttribute("action", "/clubs/" + id + "/delete");
+            document.body.appendChild(form);
+            form.submit();
+        }
 
-  }
+    }
 </script>
 ```
+
 ##### id값을 받아와 clubservice.deleteClub의 매개변수로 넘긴다.
+
+##### 받아온 id값으로 해당 엔티티를 검색하여 changeStatus와deleteClub 메소드의 매개변수로 넣어준다.
+
 ```java
+
 @Controller
 @RequiredArgsConstructor
 public class ClubController {
-  @PostMapping("clubs/{clubId}/delete")
-  public String deleteClub(@PathVariable("clubId") Long clubId) {
-    clubService.deleteClub(clubId);
-    return "redirect:/clubs";
-  }
+    @
+    @PostMapping("clubs/{clubId}/delete")
+    public String deleteClub(@PathVariable("clubId") Long clubId) {
+        Club club = clubService.findOne(clubId);
+        joinClubService.chageStatus(club);
+        clubService.deleteClub(club);
+        return "redirect:/clubs";
+    }
 }
 ```
-#####매개변수로 받은 club을 삭제한다.
+
+### 1. 매개변수로 받은 club에 가입한 멤버의 상태를 cancle로 바꿔준다.
+
++ JoinClubRepository
+####매개변수로 넘어온 클럽으로 join_id를 찾는다.
+
+ ```java
+  public interface JoinclubMapping {
+    Long getJoin_Id();  //조인아이디
+}
+ ```
+
+```java
+
+@Repository
+public interface JoinClubRepository extends JpaRepository<JoinClub, Long> {
+    List<JoinclubMapping> findByClub(Club club);
+}
+```
++ JoinClubService
+#### 매개변수로 넘어온 클럽의 join_id값을 받아와 해당 사이즈만큼 포문으로 돌리며
+#### 해당하는 멤버의 상태를 cancel로 바꾼다.
+```java
+public class JoinClubService {
+    @Transactional
+    public void chageStatus(Club club) {
+        List<JoinclubMapping> byClub = joinClubRepository.findByClub(club);
+        int size = byClub.size();
+        for (int i = 0; i < size; i++) {
+            Join join = joinRepository.findOne(byClub.get(i).getJoin_Id());
+            join.cancel();
+        }
+    }
+```
+
+### 2. 매개변수로 받은 club을 삭제한다.
+
 + clubRepository
+
 ```java
 public class ClubRepository {
 
@@ -326,7 +386,9 @@ public class ClubRepository {
     }
 }
 ```
-+  clubService
+
++ clubService
+
 ```java
 public class ClubService {
 
@@ -340,8 +402,22 @@ public class ClubService {
 }
 ```
 
++ JoinClub과 연관관계를 맺고있고 cascade.REMOVE옵션을 추가하여. 클럽이 삭제될 경우 같이 삭제 된다.
+
+```java
+public abstract class Club {
+
+    @OneToMany(mappedBy = "club", cascade = CascadeType.REMOVE)
+    private List<JoinClub> joinClubs = new ArrayList<>();
+}
+```
+
 ## 아직 수정해야 할것
+
 + 삭제시 member 신청 상태를 cancle로 바꾸기.
++ 클럽의 아이디를 컨트톨러에서 받아와서 -> 조인클럽 서비스의 changestatus를 부른다. ->
+  조인클럽 리포지토리에 선언해놓은 findByClub 으로 클럽객체를 넣어 찾는다. 다시 정리할거다.
+  
 
 
 

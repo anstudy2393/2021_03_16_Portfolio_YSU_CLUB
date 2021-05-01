@@ -34,4 +34,12 @@ public class Member {
     @OneToMany(mappedBy = "boardMember")
     private List<NoticeBoard> noticeBoardList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "eventMember")
+    private List<EventBoard> eventBoardList = new ArrayList<>();
+
+////,,,,,,,
+    public void delClub(Join join){
+        joins.remove(join);
+        join.setMember(null);
+    }
 }
