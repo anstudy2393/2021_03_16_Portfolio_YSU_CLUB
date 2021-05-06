@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 import java.util.List;
 
-
 @Controller
 @RequiredArgsConstructor
 public class EventBoardController {
@@ -67,7 +66,6 @@ public class EventBoardController {
         eventBoardService.delete(eventId);
         return "redirect:/eventBoard/list";
     }
-
 
     @GetMapping("/eventBoard/list")
     public String list(@PageableDefault Pageable pageable, Model model) {
