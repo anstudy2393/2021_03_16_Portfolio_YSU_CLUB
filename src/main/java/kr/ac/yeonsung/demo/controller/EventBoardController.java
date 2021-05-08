@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 import java.util.List;
 
+
 @Controller
 @RequiredArgsConstructor
 public class EventBoardController {
@@ -74,6 +75,5 @@ public class EventBoardController {
 
         List<EventBoard> getEventList = eventBoardList.getContent();
         model.addAttribute("getEventList", getEventList);
-        return "eventBoard/eventList";
     }
 }
