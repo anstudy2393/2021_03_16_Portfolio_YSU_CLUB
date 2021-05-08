@@ -16,6 +16,7 @@ public class JoinClub {
     @GeneratedValue
     @Column(name = "join_club_id")
     private Long id;
+
 //체크하기
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "join_id")
@@ -48,7 +49,7 @@ public class JoinClub {
     }
     //=====비즈니스 로직=====//
     //동아리 탈퇴
-    public void cancel(){
-        getClub().addMember(count);//Club클래스의 addMember메소드로 인원수 증가
+    public void cancel(){ getClub().addMember(count);//Club클래스의 addMember메소드로 인원수 증가
     }
+
 }
