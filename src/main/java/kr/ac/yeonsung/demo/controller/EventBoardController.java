@@ -75,5 +75,6 @@ public class EventBoardController {
 
         List<EventBoard> getEventList = eventBoardList.getContent();
         model.addAttribute("getEventList", getEventList);
+        return "eventBoard/eventList";
     }
 }
