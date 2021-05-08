@@ -5,32 +5,32 @@
 <div th:replace="fragments/navbar :: navbar" />
 <div class="container">
     <div>
-        <table class="table table-striped" th:each="notice : ${noticeId}">
+        <table class="table table-striped" th:each="event : ${eventId}">
             <thead>
             <tr>
-                <th th:text="${noticeId.id}+'번게시물'" colspan="2"></th>
+                <th th:text="${eventId.id}+'번게시물'" colspan="2"></th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td th:text="제목"></td>
-                <td th:text="${noticeId.title}"></td>
+                <td th:text="${eventId.title}"></td>
             </tr>
             <tr>
                 <td th:text="작성일자"></td>
-                <td th:text="${noticeId.writeDate}"></td>
+                <td th:text="${eventId.writeDate}"></td>
             </tr>
             <tr>
                 <td th:text="내용"></td>
-                <td><a th:text="${noticeId.content}" /></td>
+                <td><a th:text="${eventId.content}" /></td>
             </tr>
             <td colspan="2">
-                <a href="" th:href="@{'/noticeBoard/update/'+${noticeId.id}}" class="btn btn-primary" style="float: right">수정</a>
+                <a href="" th:href="@{'/eventBoard/updateEdit/'+${eventId.id}}" class="btn btn-primary" style="float: right">수정</a>
             </td>
             </tbody>
         </table>
     </div>
+    <div th:replace="fragments/footer :: footer" />
 </div> <!-- /container -->
-<div th:replace="fragments/footer :: footer" />
 </body>
 </html>
