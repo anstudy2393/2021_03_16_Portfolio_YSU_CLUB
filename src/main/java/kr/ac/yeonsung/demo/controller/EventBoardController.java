@@ -36,7 +36,7 @@ public class EventBoardController {
             return "eventBoard/eventWrite";
         }
         eventBoardService.write(form);
-        return "redirect:/";
+        return "redirect:/eventBoard/list";
     }
 
     @GetMapping("/eventBoard/view/{eventId}")
