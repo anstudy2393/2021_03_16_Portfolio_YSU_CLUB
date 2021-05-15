@@ -417,7 +417,7 @@ public abstract class Club {
 + 삭제시 member 신청 상태를 cancle로 바꾸기.
 + 클럽의 아이디를 컨트톨러에서 받아와서 -> 조인클럽 서비스의 changestatus를 부른다. ->
   조인클럽 리포지토리에 선언해놓은 findByClub 으로 클럽객체를 넣어 찾는다. 다시 정리할거다.
-
+  
 
 
 

@@ -2,9 +2,7 @@ package kr.ac.yeonsung.demo.service;
 
 import kr.ac.yeonsung.demo.domain.Join;
 import kr.ac.yeonsung.demo.domain.JoinClub;
-
 import kr.ac.yeonsung.demo.domain.JoinclubMapping;
-
 import kr.ac.yeonsung.demo.domain.club.Club;
 import kr.ac.yeonsung.demo.repository.ClubRepository;
 import kr.ac.yeonsung.demo.repository.JoinClubRepository;
@@ -32,7 +30,6 @@ public class JoinClubService {
     private JoinClubRepository joinClubRepository;
 
     @Transactional
-
     public Optional<JoinClub> findOne(Long clubId){  return joinClubRepository.findById(clubId);}
 
     @Transactional
@@ -43,6 +40,5 @@ public class JoinClubService {
             Join join = joinRepository.findOne(byClub.get(i).getJoin_Id());
                 join.cancel();
         }
-
     }
 }
