@@ -36,7 +36,7 @@ public class EventBoardController {
             return "eventBoard/eventWrite";
         }
         eventBoardService.write(form);
-        return "redirect:/";
+        return "redirect:/eventBoard/list";
     }
 
     @GetMapping("/eventBoard/view/{eventId}")
@@ -68,6 +68,7 @@ public class EventBoardController {
         return "redirect:/eventBoard/list";
     }
 
+
     @GetMapping("/eventBoard/list")
     public String list(@PageableDefault Pageable pageable, Model model) {
         Page<EventBoard> eventBoardList = eventBoardService.findAll(pageable);
@@ -75,5 +76,6 @@ public class EventBoardController {
 
         List<EventBoard> getEventList = eventBoardList.getContent();
         model.addAttribute("getEventList", getEventList);
+        return "eventBoard/eventList";
     }
 }
