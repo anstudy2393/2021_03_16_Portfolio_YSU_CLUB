@@ -15,6 +15,7 @@ import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
+
 @SpringBootTest
 @Transactional
 public class MemberServiceTest {

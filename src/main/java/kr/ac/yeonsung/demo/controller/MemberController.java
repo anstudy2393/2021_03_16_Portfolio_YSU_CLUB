@@ -7,8 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
 
 import javax.validation.Valid;
 import java.util.List;
@@ -39,7 +39,7 @@ public class MemberController {
         member.setAddress((address));
 
         memberService.join(member);
-        return "redirect:/"; // 첫 번째 페이지로 넘어가게함
+        return "redirect:/members"; // 첫 번째 페이지로 넘어가게함
     }
 
     @GetMapping("/members")
@@ -48,4 +48,33 @@ public class MemberController {
         model.addAttribute("members", members);
         return "members/memberList"; // members의 memberList.html를 반환
     }
+
+
+    @GetMapping("members/{memberId}/edit")
+    public String updateMemberForm(@PathVariable("memberId") Long memberId, Model model) {
+        Member member = memberService.findOne(memberId);
+
+        MemberForm form = new MemberForm();
+        form.setId(member.getId());
+        form.setName(member.getName());
+        form.setClassNumber(member.getAddress().getClassNumber());
+        form.setDepartment(member.getAddress().getDepartment());
+        form.setLocation(member.getAddress().getLocation());
+
+        model.addAttribute("form", form);
+        return "members/updateMemberForm";
+    }
+
+    @PostMapping("members/{memberId}/edit")
+    public String updateMember(@PathVariable Long memberId, @ModelAttribute("form") MemberForm form) {
+        memberService.updateMember(memberId, form.getName(), form.getClassNumber(), form.getDepartment(), form.getLocation());
+        return "redirect:/members";
+    }
+
+    @DeleteMapping("/members/{memberId}")
+    public String deleteMember(@PathVariable Long memberId) {
+        memberService.deleteId(memberId);
+        return "redirect:/members";
+    }
+
 }

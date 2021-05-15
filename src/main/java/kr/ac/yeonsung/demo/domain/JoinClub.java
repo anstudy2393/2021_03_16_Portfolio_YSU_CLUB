@@ -3,6 +3,7 @@ package kr.ac.yeonsung.demo.domain;
 import kr.ac.yeonsung.demo.domain.club.Club;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 
@@ -16,6 +17,7 @@ public class JoinClub {
     @Column(name = "join_club_id")
     private Long id;
 
+//체크하기
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "join_id")
     private Join join;
@@ -42,10 +44,12 @@ public class JoinClub {
         //System.out.println("===============");
         return joinClub;
     }
-
+    public void deleteJoin(){
+        setClub(null);
+    }
     //=====비즈니스 로직=====//
     //동아리 탈퇴
-    public void cancel(){
-        getClub().addMember(count);//Club클래스의 addMember메소드로 인원수 증가
+    public void cancel(){ getClub().addMember(count);//Club클래스의 addMember메소드로 인원수 증가
     }
+
 }

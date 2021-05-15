@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<div th:replace="fragments/navbar :: navbar"/>
+
 <div class="container">
     <div class="jumbotron">
         <h1>연성대 동아리</h1>
@@ -23,6 +23,10 @@
         <p>
             <a class="btn btn-lg btn-info" href="/join">동아리 신청</a>
             <a class="btn btn-lg btn-info" href="/joins">동아리 신청내역</a>
+        </p>
+        <p>
+            <a class="btn btn-lg btn-info" href="/noticeBoard/write">공지 작성</a>
+            <a class="btn btn-lg btn-info" href="/noticeBoard/list">공지 게시판</a>
         </p>
     </div>
     <div th:replace="fragments/footer :: footer"/>
