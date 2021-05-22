@@ -25,15 +25,12 @@ public class JoinService {
     private final JoinRepository joinRepository;
     private final JoinClubRepository joinClubRepository;
 
-    public Member findOne(Long memberId) {
-        return memberRepository.findById(memberId).orElse(null);
-    }
     //가입
     @Transactional
     public Long Join(Long memberId,Long clubId,int count){
         //System.out.println("=====ServiceLine=====");
         //엔티티 생성
-        Member member = findOne(memberId);
+        Member member = memberRepository.findById(memberId).orElse(null);
         Club club = clubRepository.findById(clubId).orElse(null);;
 
         //동아리 생성
