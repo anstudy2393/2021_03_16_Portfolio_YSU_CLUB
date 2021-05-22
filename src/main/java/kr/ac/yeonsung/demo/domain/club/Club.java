@@ -18,7 +18,7 @@ import java.util.List;
 public abstract class Club {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "club_id")
     private Long id;
 
@@ -32,6 +32,8 @@ public abstract class Club {
 
     @OneToMany(mappedBy = "club",cascade = CascadeType.REMOVE)
     private List<JoinClub> joinClubs = new ArrayList<>();
+
+    private String clubJang;
 
     //=====비즈니스 로직=====//
     //동아리 탈퇴(총인원에서 1증가)
