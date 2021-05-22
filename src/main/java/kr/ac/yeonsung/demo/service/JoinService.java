@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -50,7 +49,7 @@ public class JoinService {
     public Join findOne(Long joinId){
         return joinRepository.findById(joinId).orElse(null);
     }
-    
+
     //탈퇴
     @Transactional
     public void cancelClub(Long clubId){

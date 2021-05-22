@@ -10,8 +10,8 @@ import static javax.persistence.FetchType.*;
 @Getter @Setter @DynamicInsert
 public class NoticeBoard {
 
-    @Id @GeneratedValue
-    @Column(name = "boardNotice_id")
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "board_notice_id")
     private Long id;//게시글번호
 
     @Column(columnDefinition = "varchar(100) default '관리자'")

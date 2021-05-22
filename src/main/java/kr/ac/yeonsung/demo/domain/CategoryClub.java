@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class CategoryClub {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_club_id")
     private Long id;
 
