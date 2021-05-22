@@ -53,6 +53,7 @@ public class NoticeBoardController {
     }
 
     //게시글 수정
+    //=====해당 게시글 title, content가져오기=====//
     @GetMapping("/noticeBoard/update/{noticeId}")
     public String update(@PathVariable("noticeId") Long noticeId, Model model){
         NoticeBoard findNotice = noticeBoardService.findOne(noticeId);
@@ -79,6 +80,7 @@ public class NoticeBoardController {
         model.addAttribute("getBoardList",getBoardList);//list size가져옴, list size확인용
         return "noticeBoard/noticeList";
     }
+    //메인 index 최신 공지사항 3개 가져오기
     @GetMapping("/")
     public String getNoticeBoardListTop3(Model model){
         List<NoticeBoard> getTop = noticeBoardService.findTop3Board();

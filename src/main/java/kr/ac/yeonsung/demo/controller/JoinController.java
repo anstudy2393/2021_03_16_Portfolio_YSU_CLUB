@@ -46,7 +46,7 @@ public class JoinController {
 
     @GetMapping("/joins")
     public String orderList(Model model){
-        List<JoinClub> joinList = joinService.findAll();
+        List<JoinClub> joinList = joinService.findJoinClub();
         model.addAttribute("joins",joinList);
         return  "join/joinList";
     }
