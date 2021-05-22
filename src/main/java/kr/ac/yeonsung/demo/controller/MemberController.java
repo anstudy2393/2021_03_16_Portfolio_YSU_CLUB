@@ -1,9 +1,13 @@
 package kr.ac.yeonsung.demo.controller;
 
 import kr.ac.yeonsung.demo.domain.Address;
+import kr.ac.yeonsung.demo.domain.EventBoard;
 import kr.ac.yeonsung.demo.domain.Member;
 import kr.ac.yeonsung.demo.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,12 +46,12 @@ public class MemberController {
         return "redirect:/members"; // 첫 번째 페이지로 넘어가게함
     }
 
-    @GetMapping("/members")
-    public String list(Model model) {
-        List<Member> members = memberService.findMembers();
-        model.addAttribute("members", members);
-        return "members/memberList"; // members의 memberList.html를 반환
-    }
+//    @GetMapping("/members")
+//    public String list(Model model) {
+//        List<Member> members = memberService.findMembers();
+//        model.addAttribute("members", members);
+//        return "members/memberList"; // members의 memberList.html를 반환
+//    }
 
 
     @GetMapping("members/{memberId}/edit")
@@ -75,6 +79,16 @@ public class MemberController {
     public String deleteMember(@PathVariable Long memberId) {
         memberService.deleteId(memberId);
         return "redirect:/members";
+    }
+
+    @GetMapping("/members")
+    public String list(@PageableDefault Pageable pageable, Model model) {
+        Page<Member> memberList = memberService.findAll(pageable);
+        model.addAttribute("memberList", memberList);
+
+        List<Member> getMemberList = memberList.getContent();
+        model.addAttribute("getMemberList", getMemberList);
+        return "members/memberList";
     }
 
 }
