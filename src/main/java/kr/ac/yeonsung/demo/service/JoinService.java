@@ -29,7 +29,7 @@ public class JoinService {
     public Long Join(Long memberId,Long clubId,int count){
         //System.out.println("=====ServiceLine=====");
         //엔티티 생성
-        Member member = memberRepository.findOne(memberId);
+        Member member = memberRepository.findById(memberId).orElse(null);
         Club club = clubRepository.findById(clubId).orElse(null);;
 
         //동아리 생성
@@ -46,18 +46,26 @@ public class JoinService {
         //System.out.println("===============");
         return join.getId();
     }
-    
+    public Join findOne(Long joinId){
+        return joinRepository.findById(joinId).orElse(null);
+    }
+
     //탈퇴
     @Transactional
     public void cancelClub(Long clubId){
         //엔티티 조회
-        Join join = joinRepository.findOne(clubId);
+        Join join = joinRepository.findById(clubId).orElse(null
+        );
 
         //동아리 탈퇴
         join.cancel();
     }
     // 모든 동아리 신청 현황 찾기
     public List<JoinClub> findAll() {
-        return joinRepository.findAll();
+        int size = joinRepository.findAll().size();
+        for(int i=0; i<size;i++) {
+            List<JoinClub> joinClubs1 = joinRepository.findAll().get(i).getJoinClubs();
+        }
+        return null;
     }
 }

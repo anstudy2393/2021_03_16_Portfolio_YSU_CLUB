@@ -1,6 +1,6 @@
 package kr.ac.yeonsung.demo.service;
 
-import kr.ac.yeonsung.demo.controller.NoticeBoardForm;
+import kr.ac.yeonsung.demo.form.NoticeBoardForm;
 import kr.ac.yeonsung.demo.domain.NoticeBoard;
 import kr.ac.yeonsung.demo.repository.NoticeBoardRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -10,12 +10,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import java.util.regex.Pattern;
+
 import static org.junit.Assert.*;
+
 
 @SpringBootTest
 @Transactional
-//@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD) //테스트 메소드마다 applicationContext를 새로만듬(속도가 매우느림)
 public class NoticeBoardServiceTest {
 
     @Autowired

@@ -1,4 +1,4 @@
-package kr.ac.yeonsung.demo.controller;
+package kr.ac.yeonsung.demo.form;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,5 @@ public class BookForm {
 
     private String name;
     private int totalNumber;
-
-    private String author;
-    private String isbn;
+    private String clubJang;
 }

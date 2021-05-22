@@ -16,7 +16,7 @@ import java.util.List;
 @Getter @Setter
 public class Join {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "join_id")
     private Long id;
 
