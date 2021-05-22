@@ -1,8 +1,8 @@
 package kr.ac.yeonsung.demo.controller;
 
 import kr.ac.yeonsung.demo.domain.Address;
-import kr.ac.yeonsung.demo.domain.EventBoard;
 import kr.ac.yeonsung.demo.domain.Member;
+import kr.ac.yeonsung.demo.form.MemberForm;
 import kr.ac.yeonsung.demo.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

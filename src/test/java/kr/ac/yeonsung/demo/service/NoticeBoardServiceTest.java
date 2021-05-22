@@ -1,6 +1,6 @@
 package kr.ac.yeonsung.demo.service;
 
-import kr.ac.yeonsung.demo.controller.NoticeBoardForm;
+import kr.ac.yeonsung.demo.form.NoticeBoardForm;
 import kr.ac.yeonsung.demo.domain.NoticeBoard;
 import kr.ac.yeonsung.demo.repository.NoticeBoardRepository;
 import org.junit.jupiter.api.AfterEach;
