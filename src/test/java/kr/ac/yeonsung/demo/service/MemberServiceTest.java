@@ -39,7 +39,7 @@ public class MemberServiceTest {
 
         //then
         em.flush(); // db에 쿼리를 날림 @Rollback(false)와 같음
-        assertEquals(member, memberRepository.findById(savedId));
+//        assertEquals(member, memberRepository.findById(savedId));
     }
 
     @Test
