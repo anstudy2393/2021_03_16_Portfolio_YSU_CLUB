@@ -69,7 +69,7 @@ public class JoinServiceTest {
         assertEquals("Member 동아리 탈퇴 확인",JoinStatus.cancel,member.getStatus());//탈퇴후 Member의 status가 cancel인지 확인
         assertEquals("동아리 총인원 증가 확인",10,club.getTotalNumber());//탈퇴후 Club totalNumber 증가 확인
     }
-    
+
     @Test(expected = NotJoinException.class)//예외설정
     public void 동아리_회원_초과(){
         //given

@@ -25,7 +25,7 @@
                             <td><a th:text="${notice.title}" href="" th:href="@{'/noticeBoard/view/'+${notice.id}}"/></td>
                             <td th:text="${notice.writeDate}"></td>
                             <td>
-                                <a href="" th:href="@{'/noticeBoard/cancel/'+${notice.id}}" class="btn btn-danger" th:onclick="">삭제</a>
+                                <a href="" th:href="@{'/noticeBoard/cancel/'+${notice.id}}" class="btn btn-danger" th:onclick="return confirm('게시글을 삭제하시겠습니까?')">삭제</a>
                             </td>
                         </tr>
                         </tbody>

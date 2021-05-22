@@ -1,6 +1,6 @@
 package kr.ac.yeonsung.demo.service;
 
-import kr.ac.yeonsung.demo.controller.EventBoardForm;
+import kr.ac.yeonsung.demo.form.EventBoardForm;
 import kr.ac.yeonsung.demo.domain.EventBoard;
 import kr.ac.yeonsung.demo.repository.EventBoardRepository;
 import lombok.RequiredArgsConstructor;

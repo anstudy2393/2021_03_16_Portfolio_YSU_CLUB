@@ -3,7 +3,7 @@ package kr.ac.yeonsung.demo.service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import kr.ac.yeonsung.demo.controller.NoticeBoardForm;
+import kr.ac.yeonsung.demo.form.NoticeBoardForm;
 import kr.ac.yeonsung.demo.domain.NoticeBoard;
 import kr.ac.yeonsung.demo.repository.NoticeBoardRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,8 +13,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.Id;
 
 @Service
 @Transactional(readOnly = true)

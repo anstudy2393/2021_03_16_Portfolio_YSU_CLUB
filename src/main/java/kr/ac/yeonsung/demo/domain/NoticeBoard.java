@@ -11,14 +11,15 @@ import static javax.persistence.FetchType.*;
 public class NoticeBoard {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "boardNotice_id")
+    @Column(name = "board_notice_id")
     private Long id;//게시글번호
 
     @Column(columnDefinition = "varchar(100) default '관리자'")
     private String name;//게시자
-
+    
     private String title;//제목
 
+    @Column(length = 4000)//varchar(4000)과 같음
     private String content;//게시글 내용
 
     private String writeDate;//작성한 날짜

@@ -18,7 +18,7 @@ import java.util.List;
 public abstract class Club {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "club_id")
     private Long id;
 

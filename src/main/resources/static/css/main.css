@@ -47,4 +47,7 @@ html, body {
 #viewBoard tr td:nth-child(2){
     word-break:break-all;/*문자 줄바꿈*/
 }
-
+/*Error Message Text Color*/
+.ErrorMessage{
+    color: red;
+}

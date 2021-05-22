@@ -1,4 +1,4 @@
-package kr.ac.yeonsung.demo.controller;
+package kr.ac.yeonsung.demo.form;
 
 import lombok.Getter;
 import lombok.Setter;
