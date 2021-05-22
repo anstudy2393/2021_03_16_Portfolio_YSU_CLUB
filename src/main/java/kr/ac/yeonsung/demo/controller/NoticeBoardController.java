@@ -1,6 +1,7 @@
 package kr.ac.yeonsung.demo.controller;
 
 import kr.ac.yeonsung.demo.domain.NoticeBoard;
+import kr.ac.yeonsung.demo.form.NoticeBoardForm;
 import kr.ac.yeonsung.demo.service.NoticeBoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

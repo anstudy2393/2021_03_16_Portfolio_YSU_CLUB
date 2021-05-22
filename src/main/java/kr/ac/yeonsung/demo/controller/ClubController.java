@@ -1,14 +1,12 @@
 package kr.ac.yeonsung.demo.controller;
 
 
-import kr.ac.yeonsung.demo.domain.EventBoard;
 import kr.ac.yeonsung.demo.domain.Member;
-import kr.ac.yeonsung.demo.domain.NoticeBoard;
 import kr.ac.yeonsung.demo.domain.club.Book;
 import kr.ac.yeonsung.demo.domain.club.Club;
+import kr.ac.yeonsung.demo.form.BookForm;
 import kr.ac.yeonsung.demo.service.ClubService;
 import kr.ac.yeonsung.demo.service.JoinClubService;
-import kr.ac.yeonsung.demo.service.JoinService;
 import kr.ac.yeonsung.demo.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
