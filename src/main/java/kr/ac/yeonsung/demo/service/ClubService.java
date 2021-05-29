@@ -58,11 +58,11 @@ public class ClubService {
 
     @Transactional
     public void updateClub(Long clubId, String name, int totalNumber, String clubJang) {
-        Book book = (Book)findOne(clubId);
+        Club club = findOne(clubId);
         validateDuplicateClub(name);
-        book.setName(name);
-        book.setTotalNumber(totalNumber);
-        book.setClubJang(clubJang);
+        club.setName(name);
+        club.setTotalNumber(totalNumber);
+        club.setClubJang(clubJang);
 
     }
 }
